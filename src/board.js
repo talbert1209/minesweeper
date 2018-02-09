@@ -1,26 +1,6 @@
 /*jshint esversion: 6 */
 
-class Game {
-  constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-  }
-
-  playMove(rowIndex, columnIndex) {
-    this._board.flipTile(rowIndex, columnIndex);
-    if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-        console.log('Game Over!');
-        this._board.print();
-    } else if (this._board.hasSafeTiles()) {
-      console.log('Keep going!');
-      console.log('Current Board: ');
-      this._board.print();
-    } else {
-      console.log('Congratulations! You win!');
-    }
-  }
-}
-
-class Board {
+export class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
     this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -124,7 +104,3 @@ class Board {
     return board;
   }
 }
-
-//Testing the game
-const g = new Game(3,3,3);
-g.playMove(1,1);
